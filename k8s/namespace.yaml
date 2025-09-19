@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: google-online-boutique
+  labels:
+    project: online-boutique
+    owner: sri

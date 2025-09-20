@@ -27,4 +27,4 @@ kubectl get svc -n <namespace>
 
 
 ## Notes
-This was just for practice and learning Ingress on EKS (region: us-east-2)
+This was just for practice and learning Ingress on EKS (region: us-west-2)

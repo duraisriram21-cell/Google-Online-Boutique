@@ -1,0 +1,19 @@
+# OS/editor junk
+.DS_Store
+*.swp
+*.tmp
+
+# Optional envs
+venv/
+node_modules/
+
+# Credentials / secrets (never commit)
+.kube/
+*.kubeconfig
+*.pem
+*.key
+*.crt
+*.creds
+*.tfstate*
+.env
+.aws/

@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: online-boutique-ingress
+  namespace: online-boutique
+  labels:
+    app.kubernetes.io/name: online-boutique
+    app.kubernetes.io/component: ingress
+  annotations:
+    # --- Core ALB settings ---
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/group.name: online-boutique
+    # Health checks (tune if your app has a dedicated health endpoint)
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "15"
+    alb.ingress.kubernetes.io/success-codes: "200-399"
+    # Listener(s)
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+
+    # --- OPTIONAL: turn these on later when you have a domain + ACM cert ---
+    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:REGION:ACCOUNT:certificate/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+    # alb.ingress.kubernetes.io/ssl-redirect: "443"
+
+    # --- OPTIONAL: extra hygiene knobs ---
+    # alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=60
+    # alb.ingress.kubernetes.io/delete-logs-on-destroy: "true"
+    # alb.ingress.kubernetes.io/load-balancer-name: online-boutique-alb
+spec:
+  ingressClassName: alb
+  # If/when you own a DNS name, you can add host rules.
+  # For now we keep it host-agnostic and use the ALB DNS directly.
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend      # ClusterIP service
+                port:
+                  number: 80
+

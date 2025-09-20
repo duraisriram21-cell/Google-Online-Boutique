@@ -1,0 +1,18 @@
+# Dev overrides (edit later if needed)
+frontend:
+  service:
+    type: ClusterIP
+
+service:
+  createExternalLoadBalancer: false
+
+frontend:
+  externalService:
+    enabled: false
+
+frontend:
+  service:
+    type: ClusterIP
+
+serviceExternal:
+  enabled: false

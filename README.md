@@ -15,10 +15,10 @@ I used **Kubernetes manifests + Helm**, and also tried **Ingress with ALB**.
 1. First I created a namespace:
    kubectl apply -f k8s/namespace.yaml
 
-2.Then I applied the manifests:
+2. Then I applied the manifests:
   kubectl apply -f k8s/kubernetes-manifests.yaml
 
-3.Finally I added ingress:
+3. Finally I added ingress:
 kubectl apply -f k8s/online-boutique-ingress.yaml
 
 ## How I checked

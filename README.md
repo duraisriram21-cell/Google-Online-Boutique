@@ -28,3 +28,17 @@ kubectl get svc -n <namespace>
 
 ## Notes
 This was just for practice and learning Ingress on EKS (region: us-west-2)
+
+## Screenshots
+
+- Pods & Services running:  
+  ![Pods & Services](docs/Screenshots/Pods&Services.png)
+
+- Ingress and URL:  
+  ![Ingress URL](docs/Screenshots/Ingress_URL.png)
+
+- Online Boutique UI:  
+  ![UI](docs/Screenshots/UI.png)
+
+(For more detailed logs and command outputs, see [docs/Screenshots/](docs/Screenshots/))
+
